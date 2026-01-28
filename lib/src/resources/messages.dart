@@ -1,11 +1,12 @@
 import '../client.dart';
+import '../models.dart';
 
 class Messages {
   final Client _client;
 
   Messages(this._client);
 
-  Future<dynamic> create({
+  Future<SmsResponse> create({
     required String to,
     required String body,
     String? senderId,
@@ -16,7 +17,9 @@ class Messages {
       data['sender_id'] = senderId;
     }
 
-    return _client.request('POST', '/api/sms/send/', data: data);
+    final response =
+        await _client.request('POST', '/api/sms/send/', data: data);
+    return SmsResponse.fromJson(response);
   }
 
   Future<dynamic> createBulk({
@@ -37,7 +40,9 @@ class Messages {
     return _client.request('POST', '/api/sms/send-bulk/', data: data);
   }
 
-  Future<dynamic> get(dynamic messageId) async {
-    return _client.request('GET', '/api/sms/$messageId/status/');
+  Future<SmsResponse> get(dynamic messageId) async {
+    final response =
+        await _client.request('GET', '/api/sms/$messageId/status/');
+    return SmsResponse.fromJson(response);
   }
 }

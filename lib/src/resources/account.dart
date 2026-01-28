@@ -1,11 +1,13 @@
 import '../client.dart';
+import '../models.dart';
 
 class Account {
   final Client _client;
 
   Account(this._client);
 
-  Future<dynamic> balance() async {
-    return _client.request('GET', '/api/sms/balance/');
+  Future<BalanceResponse> balance() async {
+    final response = await _client.request('GET', '/api/sms/balance/');
+    return BalanceResponse.fromJson(response);
   }
 }

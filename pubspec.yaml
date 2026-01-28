@@ -1,6 +1,6 @@
 name: plexisms
 description: A Dart client for the PlexiSMS API.
-version: 1.0.0
+version: 1.0.1
 homepage: https://plexisms.com
 repository: https://github.com/plexisms/sdk-plexisms-dart
 
