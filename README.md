@@ -14,7 +14,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  plexisms: ^0.0.1
+  plexisms: ^1.0.2
 ```
 
 Or install it via command line:
